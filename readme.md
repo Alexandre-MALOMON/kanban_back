@@ -6,7 +6,7 @@ Laravel 8
 
 ## Clone the repository
 
-git clone https://github.com/Darrel6/kanban_back.git
+git clone https://git@github.com:Alexandre-MALOMON/kanban_back.git
 
 Switch to the repo folder
 
