@@ -45,7 +45,7 @@ class CollaboratorController extends Controller
             'project_id' => 'required'
         ]);
 
-        Collaborator::create([
+       $collaborator = Collaborator::create([
             'user_id' => Auth::user()->id,
             'collab_id' => $collabos['collab_id'],
             'project_id' => $collabos['project_id']
@@ -53,7 +53,8 @@ class CollaboratorController extends Controller
 
         return response([
             'status' => 200,
-            'message' => "Collaborateur ajouté"
+            'message' => "Collaborateur ajouté",
+            'collaborator' => $collaborator
         ]);
     }
 

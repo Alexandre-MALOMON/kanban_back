@@ -54,7 +54,7 @@ class TaskController extends Controller
             'project_id' => 'required',
         ]);
 
-        Task::create([
+      $task = Task::create([
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
@@ -64,7 +64,8 @@ class TaskController extends Controller
         ]);
         return response([
             'status' => "success",
-            'message' => "Tache ajouté avec succès"
+            'message' => "Tache ajouté avec succès",
+            'task' => $task
         ], 200);
     }
 
@@ -114,6 +115,7 @@ class TaskController extends Controller
         return response()->json([
             "status" => "success",
             "message" => "Tache modifiée avec succès",
+            'task' => $tasks
         ]);
     }
 
@@ -131,7 +133,8 @@ class TaskController extends Controller
         }
         return response([
             "status" => 200,
-            "task" => "Tasche supprimé"
+            "message" => "Tache supprimé",
+            'task' => $task
         ]);
     }
     public function updateTask(Request $request, $id)
@@ -140,13 +143,14 @@ class TaskController extends Controller
             'status' => 'required|string|max:255',
         ]);
 
-        Task::where("id", $id)->update([
+      $task = Task::where("id", $id)->update([
             "status" => $request->status,
         ]);
 
         return response()->json([
             "status" => "success",
             "message" => "Tache modifiée avec succès",
+            'task' => $task
         ]);
     }
     public function removeTask($id)
@@ -157,7 +161,8 @@ class TaskController extends Controller
         }
         return response([
             "status" => 200,
-            "task" => "Tache supprimé"
+            "message" => "Tache supprimé",
+            'task' => $tasks
         ]);
     }
 }
